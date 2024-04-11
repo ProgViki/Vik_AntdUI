@@ -1,6 +1,7 @@
 
 // import AdvanceTable from './pages/AdvanceTable'
-import Gallery from './pages/Gallery'
+import OperationalTable from './components/OperationalTable'
+// import Gallery from './pages/Gallery'
 // import DynamicTable from './DynamicTable'
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
     <div>
       {/* <DynamicTable />   */}
       {/* <AdvanceTable />   */}
-      <Gallery />
+      {/* <Gallery /> */}
+      <OperationalTable />
     </div>
   )
 }
