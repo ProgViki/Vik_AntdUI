@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button, Form, Input, message, Popconfirm, Space, Table } from 'antd';
 import { filter, isEmpty  } from 'lodash';
 import Highlighter from "react-highlight-words";
+
  
 
 const AdvanceTables = () => {
@@ -10,9 +11,10 @@ const AdvanceTables = () => {
     const [loading , setLoading] = useState(false);
     const [editRowKey, setEditRowKey] = useState("");
     const [form] = Form.useForm();
-    const [searchText, setSearchText] = useState();
-    const [searchColText, setSearchColText] = useState();
-    const [searchCol, setSearchCol] = useState();
+    const [searchText, setSearchText] = useState("");
+    const [searchColText, setSearchColText] = useState("");
+    const [searchedCol, setSearchCol] = useState("");
+    const [filteredInfo, setFilteredInfo] = useState();
     let [filteredData] = useState();
     const type = "DraggableBodyRow";
     const tableRef = useRef();
@@ -126,6 +128,16 @@ const AdvanceTables = () => {
         })
         setEditRowKey(record.key);
     };
+    // const handleChange = (_, filters, sorter) = {
+    //     const { order, field } = sorter[2];
+    //     setFilteredInfo(filters);
+    //     if (sorter.field) {
+    //         setSortedInfo({
+    //             order: sorter.order,
+    //             columnKey: sorter.field,
+    //         });
+    //     }
+    // }
     const getColumnSearchProps = (dataIndex) => ({
         filterDropDown: ({
             setSelectedKeys,
@@ -209,6 +221,17 @@ const AdvanceTables = () => {
             editable: false,
             sorter: (a, b) => a.age.length = b.age.length,
             sortOrder: sortedInfo.columnKey === "age" && sortedInfo.order,
+            filters: [
+                {text: "20", value: "20"},
+                {text: "21", value: "21"},
+                {text: "22", value: "22"},
+                {text: "23", value: "23"},
+                {text: "24", value: "24"},
+                {text: "25", value: "25"},
+                
+            ],
+            filteredValue: filteredInfo.age || null,
+            onFilter: (value, record) => record.age.includes(value),
         },
         {
             title: "Message",
@@ -283,12 +306,12 @@ const reset = () =>{
     setSortedInfo({});
     loadData();
 }
-const handleChange = () =>{
-    setSearchText(e.target.value);
-    if (e.target.value === ""){
-        loadData();
-    }
-}
+// const handleChange = () =>{
+//     setSearchText(e.target.value);
+//     if (e.target.value === ""){
+//         loadData();
+//     }
+// }
 const globalChange = () =>{
     filteredData = modifiedData.filter((value) => {
         return(
@@ -303,11 +326,13 @@ const globalChange = () =>{
   return (
     <div>
         <Space style={{marginBottom: 16}}>
-            <Input placeholder="Enter Search Text"
-            onChange={handleChange}
-            type="text"
-            allowClear
-            value={searchText}/>
+            <Input 
+                placeholder="Enter Search Text"
+                onChange={handleChange}
+                type="text"
+                allowClear
+                value={searchText}
+            />
             <Button onClick={reset}>Reset</Button>
         </Space>
          <Form form={form} component={false}>
@@ -328,6 +353,7 @@ const globalChange = () =>{
         }}
         bordered
         loading={loading}
+        onChange={handleChange}
         /> 
          </DndProvider>
          </Form>

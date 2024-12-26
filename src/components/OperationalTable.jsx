@@ -131,6 +131,8 @@ const OperationalTable = () => {
                 return pre.map(student => {
                     if(student.id === editingStudent.id) {
                         return editingStudent
+            } else {
+                        return student
             }
         })
                 })
