@@ -12,7 +12,8 @@
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
     "antd": "^5.16.1",
-    "axios": "^1.6.8",
+    "antdesigntemp": "file:",
+    "axios": "^1.7.9",
     "formik": "^2.4.5",
     "immutability-helper": "^3.1.1",
     "jsx-runtime": "^1.2.0",

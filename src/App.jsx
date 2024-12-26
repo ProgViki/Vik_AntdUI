@@ -3,17 +3,17 @@ import AdvanceTables from './pages/AdvanceTables'
 // import Register from './pages/auth/Register'
 import OperationalTable from './components/OperationalTable'
 import Gallery from './pages/Gallery'
-import DynamicTable from './DynamicTable'
+import DynamicTables from './DynamicTables'
 
 
 function App() {
 
   return (
     <div>
-      <DynamicTable />  
+      <DynamicTables />  
       {/* <AdvanceTables />   */}
       {/* <Gallery /> */}
-      <OperationalTable />
+      {/* <OperationalTable /> */}
       {/* <Register/> */}
     </div>
   )
