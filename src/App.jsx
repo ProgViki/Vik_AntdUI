@@ -3,7 +3,7 @@ import AdvanceTables from './pages/AdvanceTables'
 // import Register from './pages/auth/Register'
 import OperationalTable from './components/OperationalTable'
 import Gallery from './pages/Gallery'
-import DynamicTables from './DynamicTables'
+import DynamicTables from './pages/DynamicTables'
 
 
 function App() {
